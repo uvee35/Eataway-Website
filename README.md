@@ -8,7 +8,5 @@
 
 - Community Interaction: A platform for users to rate recipes and leave comments.
 
-- Premium Membership: An exclusive section offering premium recipes.
-
 - Responsive Design: Optimized for a seamless experience across all devices, ensuring users can access their favorite recipes anytime, anywhere.
 
