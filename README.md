@@ -1,4 +1,4 @@
-# Recipes-Website
+# Eataway
 
 ## Key Features
 
