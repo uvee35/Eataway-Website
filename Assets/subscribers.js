@@ -43,4 +43,22 @@ function checkSubscriber(name) {
   return false;
 }
 
+function handleAddSubscriber(event) {
+  event.preventDefault(); // Prevent default form submission
+
+  const nameInput = document.getElementById('subscriberName');
+  if (nameInput && nameInput.value) {
+    addSubscriber(nameInput.value, true);
+    nameInput.value = ''; // Clear input
+  }
+}
+
+// Event listener for the form submission
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('addSubscriberForm');
+  if (form) {
+    form.addEventListener('submit', handleAddSubscriber);
+  }
+});
+
 export { addSubscriber, removeSubscriber, checkSubscriber };
