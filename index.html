@@ -9,107 +9,164 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/c1bc576c12.js" crossorigin="anonymous"></script>
-    <style>
-      /* Add your custom styles here */
-      body {
-        font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-      }
-
-      /* Add more styles as needed */
-    </style>
+    
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="bsb-hero-1 px-3 bsb-overlay bsb-hover-pull">
-      <div class="container">
-        <div class="row justify-content-md-center">
-          <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-center text-white">
-            <h1 class="display-3 fw-bold mb-3">Art of Design</h1>
-            <p class="lead mb-5">Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.</p>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-              <button type="button" class="btn bsb-btn-3xl btn-light gap-3">Free Consultation</button>
-              <button type="button" class="btn bsb-btn-3xl btn-outline-light">Buy Credits</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Image Cards Section -->
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-2">
-          <div class="card"><img src="./Assets/images/ismail.jpg" alt="ismail" ></div>
-        </div>
-        <div class="col-md-2">
-          <div class="card"><img src="./Assets/images/Tamsin.jpg" alt="tamsin"></div> <!-- Second Card -->
-        </div>
-        <div class="col-md-2">
-          <div class="card"><img src="./Assets/images/eugen..jpg" alt="eugen"></div> <!-- Third Card -->
-        
-      </div>
       
-        <div class="col-md-2">
-          <div class="card"><img src="./Assets/images/Victor.jpg" alt="victor"></div> <!-- Fourth Card -->
-        </div>
-        <div class="col-md-2">
-          <div class="card"><img src="./Assets/images/Rupert.png" alt="rupert"></div> <!-- Fifth Card -->
+      <!-- Brand/logo -->
+      <a class="navbar-brand" href="#">EATAWAY</a>
+    
+
+      <!-- Toggle button for small screens -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar links -->
+      <div
+        class="collapse navbar-collapse justify-content-end"
+        id="navbarNavAltMarkup"
+      >
+        <div class="navbar-nav">
+          <a class="nav-link" href="#">Find restaurants</a>
+          <a class="nav-link" href="#">Recipies</a>
+          <a class="nav-link" href="#">Newsletter</a>
+          <a class="nav-link" href="#">Forum</a>
         </div>
       </div>
     </div>
+  </nav>
+
+    <!-- Hero Section -->
+    <div class="container-fluid g-0">
+      <img style="max-height: 400px;object-fit: cover;" class="img-fluid w-100 min-vh-25 min-vh-md-50 mb-n7" src="./Assets/images/delicious-vietnamese-food-including-pho-ga-noodles-spring-rolls-white-table.jpg" srcset="" sizes="" width="" height="" alt="Food">
+  </div>
+
+
+  <div class="container p-5 bg-body mt-md-n6 position-relative rounded">
+      <div class="row">
+          <div class="col-md-4 text-center align-self-center">
+              <div class="lc-block border-lg-end border-2 ">
+                  <div editable="rich">
+                      <p class="display-4 text-secondary">WHY?</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-8">
+              <div class="lc-block ">
+                  <div editable="rich">
+                      <p class="display-4">EATAWAY</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-9 offset-md-1">
+              <div class="lc-block mt-5">
+                  <div editable="rich">
+                      <p class="lead text-secondary"> EATAWAY is not just another recipe website... it's a culinary paradise that offers you the best of both worlds - simple, mouthwatering recipes and a curated guide to the finest restaurants.</p>
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+    <!-- Image Cards Section -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="./Assets/images/ismail.jpg" alt="Ismail" class="card-img">
+                        <div class="github-link">
+                            <i class="fab fa-github github-logo"></i>
+                            <a href="https://github.com/Ismail-tony" target="_blank">Ismail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="./Assets/images/Tamsin.jpg" alt="Tamsin" class="card-img">
+                        <div class="github-link">
+                            <i class="fab fa-github github-logo"></i>
+                            <a href="https://github.com/TamsinLloyd99" target="_blank">Tamsin</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="Assets/images/eugen..jpg" alt="Eugen" class="card-img">
+                        <div class="github-link">
+                            <i class="fab fa-github github-logo"></i>
+                            <a href="https://github.com/Eugeni77" target="_blank">Eugen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="./Assets/images/Victor.jpg" alt="Victor" class="card-img">
+                        <div class="github-link">
+                            <i class="fab fa-github github-logo"></i>
+                            <a href="https://github.com/uvee35" target="_blank">Victor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="./Assets/images/Rupert.png" alt="Rupert" class="card-img">
+                        <div class="github-link">
+                            <i class="fab fa-github github-logo"></i>
+                            <a href="https://github.com/rupweb" target="_blank">Rupert</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+
+    <div class="newsletter-signup">
+      <h2>Subscribe to Our Newsletter</h2>
+      <form id="newsletter-form">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
 
     <!-- Footer Section -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <!-- Add content if needed -->
-          </div>
-          <ul class="list-unstyled" id="footer-links">
-            <li class="mb-2"><a href="#home" class="text-black">Home</a></li>
-            <li class="mb-2"><a href="#about-me" class="text-black">About</a></li>
-            <li class="mb-2"><a href="#work" class="text-black">Work</a></li>
-            <li class="mb-2"><a href="#contact-me" class="text-black">Contact Me</a></li>
-          </ul>
-        </div>
+  
         <!-- Section: Social media -->
         <section class="p-4 pt-0" id="social-icons">
           <div class="row">
             <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
               <!-- Add your social media links -->
-              <a class="btn btn-outline-dark btn-floating m-1" href="mailto:victormarquesrina@hotmail.com" role="button"><i class="fas fa-envelope social-icon"></i></a>
+              <a class="btn btn-outline-dark btn-floating m-1" href="mailto:email" role="button"><i class="fas fa-envelope social-icon"></i></a>
               <a class="btn btn-outline-dark btn-floating m-1" href="https://medium.com/@victor5.vm58" role="button"><i class="fab fa-medium social-icon"></i></a>
-              <a class="btn btn-outline-dark btn-floating m-1" href="https://github.com/uvee35" role="button"><i class="fab fa-github"></i></a>
-              <a class="btn btn-outline-dark btn-floating m-1" href="https://www.instagram.com/Uvee35" role="button"><i class="fab fa-instagram"></i></a>
+              <a class="btn btn-outline-dark btn-floating m-1" href="https://github.com/uvee35/Eataway-Website" role="button"><i class="fab fa-github"></i></a>
+              <a class="btn btn-outline-dark btn-floating m-1" href="instagram.com" role="button"><i class="fab fa-instagram"></i></a>
             </div>
           </div>
         </section>
