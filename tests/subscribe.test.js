@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { addSubscriber, removeSubscriber, checkSubscriber } from '../Assets/subscribers.js';
+import { addSubscriber, removeSubscriber, checkSubscriber } from '../Assets/subscribe.js';
 
 describe('string tests', () => {
   test('check subscriber', () => {
