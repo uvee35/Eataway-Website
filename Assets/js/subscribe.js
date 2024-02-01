@@ -1,39 +1,40 @@
 import { getSubscribers, putData } from "./s3.js";
 
-let subscribers = getSubscribers();
-
 function addSubscriber(key, value) {
   return new Promise((resolve, reject) => {
+    const subscribers = getSubscribers(); 
+
     // Check if the subscriber already exists
-    for (let i = 0; i < subscribers.length; i++) {
-      if (subscribers[i][0] === key) {
-        console.log(`${key} is already a subscriber.`);
-        resolve(false);
-        return;
-      }
+    const existingSubscriber = subscribers.find(subscriber => subscriber.name === key);
+    if (existingSubscriber) {
+      console.log(`${key} is already a subscriber.`);
+      resolve(false);
+      return;
     }
 
     console.log("Adding subscribers");
 
-    // Add the new subscriber by async promise
-    subscribers.then(x => {
-      x.push({ name: key, status: value });
-    });
+    // Add the new subscriber
+    subscribers.push({ name: key, status: value });
 
     console.log(`${key} added as a subscriber.`);
-    console.log(subscribers);
+    console.log(getSubscribers());
 
-    // Write to S3
-    putData();
-
-    resolve(true);
+    // Write the new JSON to S3
+    putData().then(() => {
+      console.log('Data updated in S3');
+      resolve(true);
+    }).catch(error => {
+      console.error('Error updating data:', error);
+      reject(error);
+    });
   });
 }
 
 function removeSubscriber(name) {
-  for (let i = 0; i < subscribers.length; i++) {
-    if (subscribers[i][0] === name) {
-      subscribers.splice(i, 1);
+  for (let i = 0; i < getSubscribers().length; i++) {
+    if (getSubscribers()[i][0] === name) {
+      getSubscribers().splice(i, 1);
       console.log(`${name} has been removed from subscribers.`);
       return;
     }
@@ -43,7 +44,7 @@ function removeSubscriber(name) {
 }
 
 function checkSubscriber(name) {
-  for (const subscriber of subscribers) {
+  for (const subscriber of getSubscribers()) {
     if (subscriber[0] === name) {
       console.log(`${name} is ${subscriber[1] ? 'an active' : 'not an active'} subscriber.`);
       return subscriber[1];
