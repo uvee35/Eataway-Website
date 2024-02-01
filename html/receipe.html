@@ -6,10 +6,22 @@
     <title>Receipe</title>
     
     <script src="https://kit.fontawesome.com/c1bc576c12.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../Assets/css/receipe.css">
 </head>
 <body>
     <div id="header-container"></div>
     
+    <div class="recipe-container row" id="recipe">
+        <h2>Recipe Generator</h2>
+        <div>
+            <input type="text" id="searchInput" placeholder="Enter ingredient">
+            <button onclick="getRandomRecipe()">Get Random Recipe</button>
+            <button class="search-btn" onclick="searchRecipe()">Search Recipe</button>
+        </div>
+        
+        <p id="recipeName"></p>
+        <p id="recipeInstructions"></p>
+    </div>
    
 
       
