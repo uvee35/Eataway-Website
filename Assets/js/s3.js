@@ -1,6 +1,17 @@
 let url = 'https://s3.amazonaws.com/edx.js.bucket/subscribers.json';
 let subscribers = [];
 
+// Getter and setter for subscribers array
+function getSubscribers() {
+  return subscribers;
+}
+
+function setSubscribers(newSubscribers) {
+  subscribers.splice(0, subscribers.length);
+  subscribers.push(...newSubscribers);
+}
+
+// Other functions
 async function fetchData() {
     console.log('Trying to fetch subscribers');
 
@@ -16,8 +27,12 @@ async function fetchData() {
     }
   }
 
+// Run fetch data to initialize on load
+fetchData();
+
 async function putData() {
   console.log('Trying to put subscribers');
+  console.log(subscribers);
 
     try {
       const response = await fetch(url, {
@@ -37,12 +52,4 @@ async function putData() {
     }
   }
 
-// New getSubscribers method
-async function getSubscribers() {
-    if (subscribers.length === 0) {
-      await fetchData();
-    }
-    return subscribers;
-}
-
-export { fetchData, putData, getSubscribers };
+export { fetchData, putData, getSubscribers, setSubscribers };
