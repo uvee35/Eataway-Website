@@ -1,32 +1,33 @@
-import { putData, getSubscribers } from "./s3.js";
+import { getSubscribers, putData } from "./s3.js";
 
 let subscribers = getSubscribers();
 
 function addSubscriber(key, value) {
-  // Check if the subscriber already exists
-  for (let i = 0; i < subscribers.length; i++) {
-    if (subscribers[i][0] === key) {
-      console.log(`${key} is already a subscriber.`);
-      return;
+  return new Promise((resolve, reject) => {
+    // Check if the subscriber already exists
+    for (let i = 0; i < subscribers.length; i++) {
+      if (subscribers[i][0] === key) {
+        console.log(`${key} is already a subscriber.`);
+        resolve(false);
+        return;
+      }
     }
-  }
 
-  console.log("Adding subscribers");
-  console.log(subscribers);
+    console.log("Adding subscribers");
 
-  // Add the new subscriber by async promise
-  subscribers.then(x => {
-    // Manipulate the resolved array as needed
-    x.push({ name: key, status: value });
-  
-    // Now, the resolvedArray contains the new data
-    console.log(x);
+    // Add the new subscriber by async promise
+    subscribers.then(x => {
+      x.push({ name: key, status: value });
+    });
+
+    console.log(`${key} added as a subscriber.`);
+    console.log(subscribers);
+
+    // Write to S3
+    putData();
+
+    resolve(true);
   });
-
-  console.log(`${key} added as a subscriber.`);
-
-  // Write to S3
-  putData();
 }
 
 function removeSubscriber(name) {
@@ -57,18 +58,42 @@ function handleAddSubscriber(event) {
   event.preventDefault(); // Prevent default form submission
 
   const nameInput = document.getElementById('subscriberName');
+  const response = document.getElementById('subscriptionResponse');
+
   if (nameInput && nameInput.value) {
-    addSubscriber(nameInput.value, true);
-    nameInput.value = ''; // Clear input
+    addSubscriber(nameInput.value, true).then(isNewSubscriber => {
+      if (isNewSubscriber) {
+          showSplashScreen();
+        } else {
+          response.textContent = `${nameInput.value} is already a subscriber.`;
+        }
+      nameInput.value = ''; // Clear input
+    });
   }
 }
 
-// Event listener for the form submission
+// Event listeners
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('addSubscriberForm');
   if (form) {
     form.addEventListener('submit', handleAddSubscriber);
   }
+
+  const closeBtn = document.getElementById('closeSplashButton');
+  if (closeBtn) {
+      closeBtn.addEventListener('click', closeSplash);
+  }
 });
 
-export { addSubscriber, removeSubscriber, checkSubscriber };
+function showSplashScreen() {
+  document.getElementById('splashScreen').style.display = 'block';
+};
+
+function closeSplash() {
+  document.getElementById('splashScreen').style.display = 'none';
+
+  // Redirect to index.html
+  window.location.href = '../index.html';
+};
+
+export { addSubscriber, removeSubscriber, checkSubscriber, closeSplash };
