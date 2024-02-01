@@ -10,3 +10,4 @@
 
 - Responsive Design: Optimized for a seamless experience across all devices, ensuring users can access their favorite recipes anytime, anywhere.
 
+Site address: https://uvee35.github.io/Eataway-Website
