@@ -16,9 +16,6 @@ async function fetchData() {
     }
   }
 
-// Fetch data on script initialization
-fetchData();
-
 async function putData() {
   console.log('Trying to put subscribers');
 
