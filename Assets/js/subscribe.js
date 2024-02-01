@@ -1,17 +1,32 @@
-import subscribers from './subscribers.js';
+import { putData, getSubscribers } from "./s3.js";
 
-function addSubscriber(name, status) {
+let subscribers = getSubscribers();
+
+function addSubscriber(key, value) {
   // Check if the subscriber already exists
   for (let i = 0; i < subscribers.length; i++) {
-    if (subscribers[i][0] === name) {
-      console.log(`${name} is already a subscriber.`);
+    if (subscribers[i][0] === key) {
+      console.log(`${key} is already a subscriber.`);
       return;
     }
   }
 
-  // Add the new subscriber
-  subscribers.push([name, status]);
-  console.log(`${name} added as a subscriber.`);
+  console.log("Adding subscribers");
+  console.log(subscribers);
+
+  // Add the new subscriber by async promise
+  subscribers.then(x => {
+    // Manipulate the resolved array as needed
+    x.push({ name: key, status: value });
+  
+    // Now, the resolvedArray contains the new data
+    console.log(x);
+  });
+
+  console.log(`${key} added as a subscriber.`);
+
+  // Write to S3
+  putData();
 }
 
 function removeSubscriber(name) {

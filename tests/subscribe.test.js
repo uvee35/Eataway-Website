@@ -2,9 +2,17 @@
  * @jest-environment jsdom
  */
 
-import { addSubscriber, removeSubscriber, checkSubscriber } from '../Assets/subscribe.js';
+// Get around the requirement to load node-fetch locally when it's already available in a browser
+import fetch from 'node-fetch';
 
-describe('string tests', () => {
+if (!globalThis.fetch) {
+  globalThis.fetch = fetch;
+}
+
+import { fetchData, putData } from '../Assets/js/s3.js';
+import { addSubscriber, removeSubscriber, checkSubscriber } from '../Assets/js/subscribe.js';
+
+describe('subscription tests', () => {
   test('check subscriber', () => {
     let party1 = "John";
     let party2 = "Jane"; 
@@ -23,5 +31,15 @@ describe('string tests', () => {
     let party = "Alice";
     addSubscriber(party, true);
     expect(checkSubscriber(party)).toBe(true);
+  });
+});
+
+describe('read and write tests', () => {
+  test('check read', () => {
+    fetchData();
+  });
+
+  test('check write', () => {
+    putData();
   });
 });

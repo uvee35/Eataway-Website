@@ -1,0 +1,29 @@
+{
+  "name": "eataway-website",
+  "version": "1.0.0",
+  "description": "A group project that provides recipes",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "testEnvironment": "node"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "babel-jest": "^29.7.0"
+  },
+  "type": "module"
+}
