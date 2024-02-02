@@ -1,6 +1,6 @@
 describe('Subscribers Test', () => {
     it('successfully adds a subscriber on form submission', () => {
-      cy.visit('http://127.0.0.1:5504/Eataway-Website/subscriber.html');
+      cy.visit('http://127.0.0.1:5504/Eataway-Website/html/subscriber.html');
       cy.get('#subscriberName').type('Alice');
       cy.get('#addSubscriberForm').submit();
   
