@@ -54,18 +54,18 @@
             <h1 class="planner-title text-center p-3">Weekly Meal Planner</h1>
             <form>
                 <div class="mb-3">
-                    <label for="calorie-intake" class="form-label">How many calories a day do you eat?</label>
-                    <input type="text" class="form-control" id="calorie-intake" placeholder="e.g. 2000" aria-describedby="dailyCalorie">
+                    <label for="calorieIntake" class="form-label">How many calories do you eat in a day ?</label>
+                    <input type="text" class="form-control" id="calorieIntake" placeholder="e.g. 2000" aria-describedby="dailyCalorie">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">What type of diet do you follow?</label>
-                    <input type="password" class="form-control" placeholder="e.g. vegetarian"id="exampleInputPassword1">
+                    <label for="dietType" class="form-label">What type of diet do you follow?</label>
+                    <input type="text" class="form-control" placeholder="e.g. vegetarian"id="dietType">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Are there any foods you can't eat?</label>
-                    <input type="password" class="form-control" placeholder="e.g. nuts" id="exampleInputPassword1">
+                    <label for="foodExclusions" class="form-label">Are there any foods you can't eat?</label>
+                    <input type="text" class="form-control" placeholder="e.g. nuts" id="foodExclusions">
                 </div>
-                <button onclick ="generateMealPlan()" type="submit" class="btn btn-primary" id="submit-btn">Create my meal plan!</button>
+                <button type="submit" class="btn btn-light" id="submit-btn">Create my meal plan!</button>
             </form>
         </div> 
 
@@ -99,9 +99,9 @@
                 © 2024 Group 18
             </div>
         </footer>
-        <script src="../Assets/js/mealplanner.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+            <script src="../Assets/js/mealplanner.js"></script>
 </body>
 
 </html>
