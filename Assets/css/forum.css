@@ -90,3 +90,143 @@ footer {
   color: #6c757d;
 }
 
+/* Body */
+body {
+  background-color: #FFD7C9; 
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+#card-container{
+  
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+  flex-direction: column-reverse;
+align-content: center;
+  
+}
+
+.post-card {
+  display: flex;
+  background-color: #E3F1FF; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 15px;
+  max-width: 1100px; 
+}
+
+
+
+
+/* Card Title */
+.card-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem; 
+  font-weight: bold; 
+  
+}
+.post-image {
+  width: 100px; 
+  height: 100px; 
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Card Text */
+.card-text {
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Card Stats */
+
+.card-stats, .card-info {
+  font-size: 0.875rem;
+  color: #888;
+  margin-bottom: 0;
+}
+
+
+/* View Post Button */
+
+.view-post-btn {
+  background-color: #4CAF50;
+  border: none; 
+  color: white; 
+  padding: 10px 20px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px;
+  margin: 4px 2px; 
+  transition-duration: 0.4s; 
+  cursor: pointer; 
+  border-radius: 5px; 
+}
+
+.view-post-btn:hover {
+  background-color: white; 
+  color: #4CAF50; 
+  border: 2px solid #4CAF50; 
+}
+
+
+
+
+.post-card {
+  background-color: #E3F1FF;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 20px; 
+  padding: 15px; 
+  transition: transform 0.3s ease;
+}
+
+
+
+/* footer */
+footer {
+  background-color: #f2f2f2;
+  padding: 20px 0;
+  text-align: center;
+  color: #6c757d;
+}
+
+/* Media queries */
+@media (min-width: 768px) { 
+  .col-md-4 {
+      flex: 0 0 auto;
+      width: 33.33333%; 
+  }
+}
+
+
+@media (min-width: 992px) { 
+  .col-lg-4 {
+      max-width: 300px; 
+      margin: auto; 
+  }
+}
+
+/* Responsive Navbar */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+  }
+  
+}
