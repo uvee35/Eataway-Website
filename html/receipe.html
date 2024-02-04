@@ -4,31 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receipe</title>
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/c1bc576c12.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
     <link rel="stylesheet" href="../Assets/css/receipe.css">
 </head>
 <body>
-    <div id="header-container"></div>
+    <header class="header-class">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
     
-    <div class="recipe-container row" id="recipe">
-        <h2>Recipe Generator</h2>
-        <div>
-            <input type="text" id="searchInput" placeholder="Enter ingredient">
-            <button onclick="getRandomRecipe()">Get Random Recipe</button>
-            <button class="search-btn" onclick="searchRecipe()">Search Recipe</button>
-        </div>
+              <!-- Brand/logo -->
+              <a class="navbar-brand" href="#">EATAWAY</a>
+    
+    
+              <!-- Toggle button for small screens -->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                  aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                  <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                              aria-expanded="false">
+                              Recipes
+                          </a>
+                          <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Recipe 1</a></li>
+                              <li><a class="dropdown-item" href="#">Recipe 2</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="#">Find Restaurants/Recipes</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active" href="#">Forum</a>
+                      </li>
+    
+        </nav>
+    
         
-        <p id="recipeName"></p>
-        <p id="recipeInstructions"></p>
-    </div>
-   
+        </header>
+    <section class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for food...">
+        <button onclick="searchFood()">Search</button>
+    </section>
+    
+    <section class="search-results-container">
+        <ul id="searchResults"></ul>
+    </section>
 
-      
+    <!-- Meal Details Section -->
+    <section class="meal-details-container">
+        <h2>Meal Details</h2>
+        <div id="mealDetails"></div>
+    </section>
 
+    <!-- Random Food Section -->
+    <section class="random-food-container">
+        <h2>Random Food Generator</h2>
+        <button onclick="getRandomFood()">Generate Random Food</button>
+        <div id="randomFood"></div>
+    </section>
+    
     <!-- Footer Section -->
-    <div id="footer-container"></div>
+    <script src="../Assets/js/receipe.js"></script>
+    
+<div id="footer-container"></div>
 
-    <script src="../Assets/js/script.js"></script>
-</body>
+<!-- Section: Social media -->
+<footer>
+    <section class="p-4 pt-0" id="social-icons">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <!-- Add your social media links -->
+                <a class="btn btn-outline-dark btn-floating m-1" href="mailto:email" role="button"><i
+                        class="fas fa-envelope social-icon"></i></a>
+                <a class="btn btn-outline-dark btn-floating m-1" href="https://medium.com/@victor5.vm58"
+                    role="button"><i class="fab fa-medium social-icon"></i></a>
+                <a class="btn btn-outline-dark btn-floating m-1" href="https://github.com/uvee35/Eataway-Website"
+                    role="button"><i class="fab fa-github"></i></a>
+                <a class="btn btn-outline-dark btn-floating m-1" href="instagram.com" role="button"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2024 Group 18
+    </div>
+</footer>
 </html>
