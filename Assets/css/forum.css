@@ -15,6 +15,7 @@
   margin: 0 10px; 
 }
 
+/* Header Style */
 .header {
   display: flex;
   justify-content: space-between;
