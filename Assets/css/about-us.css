@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+
+.navbar {
+    color: #fff;
+    padding: 1rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+header {
+    height: 100px;
+    position: relative;
+}
+
+h1 {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Home */
+
+#home {
+    width: 100%;
+    padding: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+
+
+/* Buttons */
+.btn {
+    background-color: #4CAF50;
+    border: none; 
+    color: white; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px;
+    margin: 4px 2px; 
+    transition-duration: 0.4s; 
+    cursor: pointer; 
+    border-radius: 5px; 
+}
+
+.btn:hover::after {
+    background-color: white; 
+    color: #4CAF50; 
+    border: 2px solid #4CAF50; 
+}
+
+.num-item {
+    font-size: 1.5rem;
+    line-height: 1.4rem;
+    color: rgb(43, 126, 199);
+}
+
+body {
+    background-color: #FFD7C9; /* Set the background color for the entire page */
+}
+ 
+
+/* Custom card style */
+.custom-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card img {
+    max-width: 100%;
+}
+
+.custom-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.custom-card p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.custom-card ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.custom-card li {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.custom-card .btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+.custom-card .btn:hover {
+    background-color: #45a049;
+}
+
+
+
+/* Our Team Section */
+#our-Team {
+    width: 80%;
+    margin: 4rem auto 1rem;
+}
+
+#our-Team h2 {
+    text-align: center;
+    margin: 1rem auto 4rem;
+    position: relative;
+}
+
+#our-Team h2::after {
+    content: '';
+    height: 4px;
+    margin: 0 auto;
+    text-align: center;
+    width: 15%;
+    background-color: aqua;
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    border-radius: 5px;
+    transform: translate(-50%);
+}
+
+.teamContainer {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.team-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.team-item h5 {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+.team-item span {
+    margin-top: .4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(7, 176, 176);
+}
+
+.team-item img {
+    width: 80px;
+}
+
+footer {
+    padding: 1rem 0;
+    text-align: center;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 633px) {
+ 
+
+    .teamContainer {
+        justify-content: center;
+    }
+}
+
+
+@keyframes width {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
