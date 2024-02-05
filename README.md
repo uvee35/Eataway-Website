@@ -11,3 +11,9 @@
 - Responsive Design: Optimized for a seamless experience across all devices, ensuring users can access their favorite recipes anytime, anywhere.
 
 Site address: https://uvee35.github.io/Eataway-Website
+
+## Cypress tests
+
+To run cypress tests ensure the `tasks.json` file is configured.
+Go to VS Code top centre menu and `Run Tasks` and select `Open Cypress`.
+Then follow the onscreen prompts.
