@@ -26,6 +26,7 @@ function searchFood() {
 
                         listItem.appendChild(link);
                         searchResultsContainer.appendChild(listItem);
+                    console.log(data);
                     });
                 } else {
                     searchResultsContainer.innerHTML = "<p>No results found.</p>";
