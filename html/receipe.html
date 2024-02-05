@@ -16,24 +16,26 @@
 
 <body>
     <div id="header-container"></div>
-    <section class="search-container">
-        <input type="text" id="searchInput" placeholder="Search for food...">
-        <button onclick="searchFood()">Search</button>
+    <section class="search-container justify-content-center">
+        <div>
+            <input type="text" id="searchInput" placeholder="Search for food...">
+            <button onclick="searchFood()">Search</button>
+        </div>
+        <div>
+            <button onclick="getRandomFood()">Generate Random Food</button>
+        </div>
     </section>
     <section class="search-results-container">
         <ul id="searchResults"></ul>
     </section>
     <!-- Meal Details Section -->
-    <section class="meal-details-container">
-        <h2>Meal Details</h2>
-        <div id="mealDetails"></div>
-    </section>
+    <div class="container mt-4" id="mealDetails"></div>
+    <!-- Add a container for detailed meal details -->
+    <div id="detailedMealDetails" class="card mt-3"></div>
+    <div id="randomFood"></div>
+
     <!-- Random Food Section -->
-    <section class="random-food-container">
-        <h2>Random Food Generator</h2>
-        <button onclick="getRandomFood()">Generate Random Food</button>
-        <div id="randomFood"></div>
-    </section>
+
     <!-- Footer Section -->
     <div id="footer-container">
         <script src="../Assets/js/receipe.js"></script>
@@ -42,6 +44,8 @@
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
             crossorigin="anonymous">
         </script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     </div>
 </body>
 </html>

@@ -1,14 +1,12 @@
-// TheMealDB API key (replace with your actual API key)
 const apiKey = "1";
 
-// Function to search for food
 function searchFood() {
-    const searchInput = document.getElementById("searchInput").value;
-    const searchResultsContainer = document.getElementById("searchResults");
-    const mealDetailsContainer = document.getElementById("mealDetails");
-    console.log("searchFood function called");
-    searchResultsContainer.innerHTML = "";
-    mealDetailsContainer.innerHTML = "";
+    const searchInput = $("#searchInput").val();
+    const searchResultsContainer = $("#searchResults");
+    const mealDetailsContainer = $("#mealDetails");
+
+    searchResultsContainer.html("");
+    mealDetailsContainer.html("");
 
     if (searchInput.trim() !== "") {
         fetch(`https://www.themealdb.com/api/json/v1/${apiKey}/search.php?s=${searchInput}`)
@@ -16,93 +14,78 @@ function searchFood() {
             .then(data => {
                 if (data.meals) {
                     data.meals.forEach(meal => {
-                        const listItem = document.createElement("li");
-                        const link = document.createElement("a");
+                        const listItem = $("<li>");
+                        const link = $("<a>")
+                            .attr("href", "#")
+                            .text(meal.strMeal)
+                            .click(() => displayFoodDetails(meal.idMeal));
 
-                        link.href = "#";
-                        link.addEventListener("click", () => displayFoodDetails(meal.idMeal));
-
-                        link.textContent = meal.strMeal;
-
-                        listItem.appendChild(link);
-                        searchResultsContainer.appendChild(listItem);
-                    console.log(data);
+                        listItem.append(link);
+                        searchResultsContainer.append(listItem);
                     });
                 } else {
-                    searchResultsContainer.innerHTML = "<p>No results found.</p>";
+                    searchResultsContainer.html("<p>No results found.</p>");
                 }
             })
             .catch(error => console.error('Error searching for food:', error));
     } else {
-        searchResultsContainer.innerHTML = "<p>Please enter a search query.</p>";
+        searchResultsContainer.html("<p>Please enter a search query.</p>");
     }
 }
 
-// Function to display food details (for both search and random)
 function displayFoodDetails(mealId) {
-    const mealDetailsContainer = document.getElementById("mealDetails");
+    const mealDetailsContainer = $("#mealDetails");
 
-    // API call to get meal details
     fetch(`https://www.themealdb.com/api/json/v1/${apiKey}/lookup.php?i=${mealId}`)
         .then(response => response.json())
         .then(data => {
             const mealDetails = data.meals[0];
-
-            // Create HTML elements to display meal details
             const mealDetailsHTML = `
-                <div>
-                    <h3>${mealDetails.strMeal}</h3>
-                    <img src="${mealDetails.strMealThumb}" alt="${mealDetails.strMeal}" class="img-thumbnail">
-                    <p>${mealDetails.strInstructions}</p>
-                    <h4>Ingredients:</h4>
-                    <ul>
-                        ${getIngredientsList(mealDetails)}
-                    </ul>
-                </div>
-            `;
+        <div>
+        <h3 class="text-center">${mealDetails.strMeal}</h3>
+        <div class="row">
+            <img src="${mealDetails.strMealThumb}" alt="${mealDetails.strMeal}" class="img-thumbnail">
+            <p>${mealDetails.strInstructions}</p>
+            <h4>Ingredients:</h4>
+            <ul>
+            ${getIngredientsList(mealDetails)}
+            </ul>
+        </div>
+        </div>
+    `;
 
-            // Display meal details in the container
-            mealDetailsContainer.innerHTML = mealDetailsHTML;
+            mealDetailsContainer.html(mealDetailsHTML);
         })
         .catch(error => console.error('Error fetching meal details:', error));
 }
 
-// Function to generate random food
 function getRandomFood() {
-    console.log("getRandomFood function called");
-    const randomFoodContainer = document.getElementById("randomFood");
+    const randomFoodContainer = $("#randomFood");
 
-    // Clear previous content
-    randomFoodContainer.innerHTML = "";
+    randomFoodContainer.html("");
 
     fetch(`https://www.themealdb.com/api/json/v1/${apiKey}/random.php`)
         .then(response => response.json())
         .then(data => {
             const randomFood = data.meals[0];
-
-            // Create HTML elements to display random food details
             const randomFoodHTML = `
-                <div>
-                    <h3>${randomFood.strMeal}</h3>
-                    <img src="${randomFood.strMealThumb}" alt="${randomFood.strMeal}" class="img-thumbnail">
-                    <p>${randomFood.strInstructions}</p>
-                    <h4>Ingredients:</h4>
-                    <ul>
-                        ${getIngredientsList(randomFood)}
-                    </ul>
-                </div>
-            `;
+        <div>
+        <h3>${randomFood.strMeal}</h3>
+        <img src="${randomFood.strMealThumb}" alt="${randomFood.strMeal}" class="img-thumbnail">
+        <p>${randomFood.strInstructions}</p>
+        <h4>Ingredients:</h4>
+        <ul>
+            ${getIngredientsList(randomFood)}
+        </ul>
+        </div>
+    `;
 
-            // Display random food details in the container
-            randomFoodContainer.innerHTML = randomFoodHTML;
-
-            // Optionally, you can scroll to the meal details section for better visibility
-            document.getElementById("mealDetails").scrollIntoView({ behavior: "smooth" });
+            randomFoodContainer.html(randomFoodHTML);
+            $("#mealDetails").get(0).scrollIntoView({ behavior: "smooth" });
         })
         .catch(error => console.error('Error fetching random food details:', error));
 }
 
-// Additional function to get ingredients list
 function getIngredientsList(foodDetails) {
     const ingredientsList = [];
 
