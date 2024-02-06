@@ -24,16 +24,12 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
-
 .header-title {
   margin: auto;
   color: #333;
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  
 }
 
 .header-controls {
@@ -80,16 +76,6 @@
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0)
 }
 
-
-
-/* footer */
-footer {
-  background-color: #f2f2f2;
-  padding: 20px 0;
-  text-align: center;
-  color: #6c757d;
-}
-
 /* Body */
 body {
   background-color: #FFD7C9; 
@@ -98,16 +84,13 @@ body {
   font-family: 'Arial', sans-serif;
 }
 
-#card-container{
-  
+#card-container {
   margin: auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  
   flex-direction: column-reverse;
-align-content: center;
-  
+  align-content: center; 
 }
 
 .post-card {
@@ -120,16 +103,13 @@ align-content: center;
   max-width: 1100px; 
 }
 
-
-
-
 /* Card Title */
 .card-title {
   margin-bottom: 0.5rem;
   font-size: 1.5rem; 
   font-weight: bold; 
-  
 }
+
 .post-image {
   width: 100px; 
   height: 100px; 
@@ -141,11 +121,11 @@ align-content: center;
   display: flex;
   flex-direction: column;
 }
+
 .post-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 /* Card Text */
 .card-text {
@@ -154,16 +134,13 @@ align-content: center;
 }
 
 /* Card Stats */
-
 .card-stats, .card-info {
   font-size: 0.875rem;
   color: #888;
   margin-bottom: 0;
 }
 
-
 /* View Post Button */
-
 .view-post-btn {
   background-color: #4CAF50;
   border: none; 
@@ -185,9 +162,6 @@ align-content: center;
   border: 2px solid #4CAF50; 
 }
 
-
-
-
 .post-card {
   background-color: #E3F1FF;
   border: 1px solid #ccc;
@@ -197,16 +171,6 @@ align-content: center;
   transition: transform 0.3s ease;
 }
 
-
-
-/* footer */
-footer {
-  background-color: #f2f2f2;
-  padding: 20px 0;
-  text-align: center;
-  color: #6c757d;
-}
-
 /* Media queries */
 @media (min-width: 768px) { 
   .col-md-4 {
@@ -214,7 +178,6 @@ footer {
       width: 33.33333%; 
   }
 }
-
 
 @media (min-width: 992px) { 
   .col-lg-4 {
@@ -228,5 +191,4 @@ footer {
   .navbar {
     flex-direction: column;
   }
-  
 }
