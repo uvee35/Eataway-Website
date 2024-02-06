@@ -1,102 +1,145 @@
 const apiKey = "1";
+const searchInput = $("#searchInput");
+const searchResultsContainer = $("#searchResults");
+const imageContainer = $("#image");
+const recipeContainer = $("#recipe");
+const ingredientsContainer = $("#ingredients");
+
+function clearPreviousData() {
+    searchResultsContainer.empty();
+    imageContainer.empty();
+    recipeContainer.empty();
+    ingredientsContainer.empty();
+}
 
 function searchFood() {
-    const searchInput = $("#searchInput").val();
-    const searchResultsContainer = $("#searchResults");
-    const mealDetailsContainer = $("#mealDetails");
+    clearPreviousData();
 
-    searchResultsContainer.html("");
-    mealDetailsContainer.html("");
-
-    if (searchInput.trim() !== "") {
-        fetch(`https://www.themealdb.com/api/json/v1/${apiKey}/search.php?s=${searchInput}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.meals) {
-                    data.meals.forEach(meal => {
-                        const listItem = $("<li>");
-                        const link = $("<a>")
-                            .attr("href", "#")
-                            .text(meal.strMeal)
-                            .click(() => displayFoodDetails(meal.idMeal));
-
-                        listItem.append(link);
-                        searchResultsContainer.append(listItem);
-                    });
-                } else {
-                    searchResultsContainer.html("<p>No results found.</p>");
-                }
-            })
-            .catch(error => console.error('Error searching for food:', error));
-    } else {
+    const input = searchInput.val().trim();
+    if (!input) {
         searchResultsContainer.html("<p>Please enter a search query.</p>");
+        return;
     }
+
+    fetch(`https://www.themealdb.com/api/json/v1/${apiKey}/search.php?s=${input}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.meals) {
+                data.meals.forEach(meal => {
+                    const card = $("<div>")
+                        .addClass("card")
+                        .append(
+                            $("<div>").addClass("card-body")
+                                .append($("<h5>").addClass("card-title").text(meal.strMeal))
+                                .append($("<a>").attr("href", "#").addClass("card-link").text("View Details").click(() => {
+                                    displayFoodDetails(meal.idMeal);
+                                    clearPreviousData();
+                                }))
+                        );
+
+                    searchResultsContainer.append(card);
+                });
+            } else {
+                searchResultsContainer.html("<p>No results found.</p>");
+            }
+        })
+        .catch(error => {
+            console.error('Error searching for food:', error);
+            searchResultsContainer.html("<p>Something went wrong. Please try again later.</p>");
+        });
 }
 
 function displayFoodDetails(mealId) {
-    const mealDetailsContainer = $("#mealDetails");
-
     fetch(`https://www.themealdb.com/api/json/v1/${apiKey}/lookup.php?i=${mealId}`)
-        .then(response => response.json())
-        .then(data => {
-            const mealDetails = data.meals[0];
-            const mealDetailsHTML = `
-        <div>
-        <h3 class="text-center">${mealDetails.strMeal}</h3>
-        <div class="row">
-            <img src="${mealDetails.strMealThumb}" alt="${mealDetails.strMeal}" class="img-thumbnail">
-            <p>${mealDetails.strInstructions}</p>
-            <h4>Ingredients:</h4>
-            <ul>
-            ${getIngredientsList(mealDetails)}
-            </ul>
-        </div>
-        </div>
-    `;
-
-            mealDetailsContainer.html(mealDetailsHTML);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
         })
-        .catch(error => console.error('Error fetching meal details:', error));
+        .then(data => {
+            const meal = data.meals[0];
+            if (!meal) {
+                throw new Error('Meal not found');
+            }
+
+            // Display meal image
+            imageContainer.html(`<img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="img-thumbnail">`);
+
+            // Display meal name
+            recipeContainer.html(`<h3 class="text-center">${meal.strMeal}</h3>`);
+
+            // Display recipe instructions
+            const instructions = meal.strInstructions.split('\n').filter(instruction => instruction.trim());
+            recipeContainer.append("<h4>Recipe:</h4>")
+                .append($("<ul>").append(instructions.map(instruction => $("<li>").text(instruction))));
+
+            // Display ingredients
+            const ingredients = [];
+            for (let i = 1; i <= 20; i++) {
+                const ingredient = meal[`strIngredient${i}`];
+                const measure = meal[`strMeasure${i}`];
+                if (ingredient && measure) {
+                    ingredients.push(`${measure} ${ingredient}`);
+                }
+            }
+            ingredientsContainer.html(`<h4>Ingredients:</h4><p>${ingredients.join('</p><p>')}</p>`);
+        })
+        .catch(error => {
+            console.error('Error fetching meal details:', error);
+            recipeContainer.html("<p>Meal details not found. Please try again later.</p>");
+        });
 }
 
 function getRandomFood() {
-    const randomFoodContainer = $("#randomFood");
-
-    randomFoodContainer.html("");
+    clearPreviousData();
 
     fetch(`https://www.themealdb.com/api/json/v1/${apiKey}/random.php`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             const randomFood = data.meals[0];
-            const randomFoodHTML = `
-        <div>
-        <h3>${randomFood.strMeal}</h3>
-        <img src="${randomFood.strMealThumb}" alt="${randomFood.strMeal}" class="img-thumbnail">
-        <p>${randomFood.strInstructions}</p>
-        <h4>Ingredients:</h4>
-        <ul>
-            ${getIngredientsList(randomFood)}
-        </ul>
-        </div>
-    `;
+            if (randomFood) {
+                // Display meal image
+                imageContainer.html(`<img src="${randomFood.strMealThumb}" alt="${randomFood.strMeal}" class="img-thumbnail">`);
 
-            randomFoodContainer.html(randomFoodHTML);
-            $("#mealDetails").get(0).scrollIntoView({ behavior: "smooth" });
+                // Display meal name
+                recipeContainer.html(`<h3 class="text-center">${randomFood.strMeal}</h3>`);
+
+                // Display meal instructions
+                const instructions = randomFood.strInstructions.split('\n').filter(instruction => instruction.trim());
+                recipeContainer.append("<h4>Recipe:</h4>")
+                    .append($("<ul>").append(instructions.map(instruction => $("<li>").text(instruction))));
+
+                // Display ingredients
+                const ingredients = [];
+                for (let i = 1; i <= 20; i++) {
+                    const ingredient = randomFood[`strIngredient${i}`];
+                    const measure = randomFood[`strMeasure${i}`];
+                    if (ingredient && measure) {
+                        ingredients.push(`${measure} ${ingredient}`);
+                    }
+                }
+                ingredientsContainer.html(`<h4>Ingredients:</h4><p>${ingredients.join('</p><p>')}</p>`);
+            } else {
+                recipeContainer.html("<p>Random food not found. Please try again later.</p>");
+            }
         })
-        .catch(error => console.error('Error fetching random food details:', error));
+        .catch(error => {
+            console.error('Error fetching random food details:', error);
+            recipeContainer.html("<p>Failed to fetch random food details. Please try again later.</p>");
+        });
 }
 
-function getIngredientsList(foodDetails) {
-    const ingredientsList = [];
-
-    for (let i = 1; i <= 20; i++) {
-        const ingredient = foodDetails[`strIngredient${i}`];
-        const measure = foodDetails[`strMeasure${i}`];
-
-        if (ingredient && measure) {
-            ingredientsList.push(`<li>${measure} ${ingredient}</li>`);
-        }
-    }
-
-    return ingredientsList.join("");
-}
+// Event listeners
+$("#searchButton").click(searchFood);
+$("#randomButton").click(getRandomFood);
