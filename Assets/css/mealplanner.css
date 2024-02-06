@@ -7,3 +7,8 @@
 #mealPlan a {
     color: #ff6666;
 }
+
+/* add box shadow -w3 schools */
+.card{
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.1);
+}
