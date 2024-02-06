@@ -1,0 +1,99 @@
+ /* Navigation Bar */
+ .navbar {
+    display: flex;
+    justify-content: flex-end; 
+  }
+  
+  .nav-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0; 
+    margin: 0; 
+  }
+  
+  .nav-item {
+    margin: 0 10px; 
+    justify-content: flex-end;
+  }
+  
+
+    
+
+  
+  .header-controls {
+    display: flex;
+    align-items: center;
+  }
+  
+
+
+
+main {
+    background: linear-gradient(to bottom, #FFD7C9, #E3F1FF);
+}
+
+h1 {
+    font-family: 'Overpass', sans-serif; /* Use the 'Overpass' font */
+    font-size: 76px;
+    background-color: #E3F1FF; 
+}
+
+/* Additional CSS for spacing and text color */
+.ad {
+    margin-bottom: 70px; 
+    margin-left: 80px;
+}
+
+.ad h4,
+.ad p {
+    color: black; 
+}
+
+/* Style for the comment submission button */
+.comment-form button,
+.ad-button  {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.comment-form button:hover {
+    background-color: #45a049; 
+}
+
+
+/* footer */
+footer {
+    background-color: #f2f2f2;
+    padding: 20px 0;
+    text-align: center;
+    color: #6c757d;
+  }
+
+  @media (max-width: 575.98px) {
+    h1 {
+        font-size: 28px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    
+}
+
+@media (min-width: 992px) {
+    
+}
