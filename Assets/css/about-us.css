@@ -8,10 +8,10 @@
 
 .navbar {
     color: #fff;
-    padding: 1rem 3rem;
+    /* padding: 1rem 3rem; */
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 
@@ -60,11 +60,11 @@ p {
     border-radius: 5px; 
 }
 
-.btn:hover::after {
+/* .btn:hover::after {
     background-color: white; 
     color: #4CAF50; 
     border: 2px solid #4CAF50; 
-}
+} */
 
 .num-item {
     font-size: 1.5rem;
