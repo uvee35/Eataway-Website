@@ -147,23 +147,28 @@
 </div>
 <!-- Comments end here -->
 
-<!-- Comments end here -->
+<!-- S3 comments in persistent storage -->
+<div id="comments-container"></div>
 
-                    <!-- Add more comments here -->
-                    <div class="comment-form mt-4">
-                        <h3>Add a Comment</h3>
-                        <form id="comment-form">
-                            <div class="form-group">
-                                <label for="name">Name:</label>
-                                <input type="text" class="form-control" id="name" name="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="comment-text">Comment:</label>
-                                <textarea class="form-control" id="comment-text" name="comment" rows="4"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
+<!-- Add more comments here -->
+<div class="comment-form mt-4">
+    <h3>Add a Comment</h3>
+    <form id="comment-form">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="comment-text">Comment:</label>
+            <textarea class="form-control" id="comment-text" name="comment" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div id="postResponse"></div>
+
+    <script type="module" src="../Assets/js/forum.js"></script>
+    <script type="module" src="../Assets/js/articles.js"></script>
+</div>
                     
                 </div>
             </main>
