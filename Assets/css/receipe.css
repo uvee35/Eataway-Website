@@ -26,6 +26,10 @@ input {
     display: none;
 }
 
+#recipeContainer {
+    background-color: white;
+}
+
 .card{
     box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #f7c1ae;
