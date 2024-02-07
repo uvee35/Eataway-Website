@@ -2,11 +2,6 @@ section {
     margin: 20px;
 }
 
-.search-container {
-    display: flex;
-    align-items: center;
-}
-
 button {
     padding: 10px;
     cursor: pointer;
@@ -18,26 +13,16 @@ input {
     width: 200px;
 }
 
-.search-results-container,
-.meal-details-container {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+
+.card{
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f7c1ae;
 }
 
-.meal-details-container {
-    background-color: #f2f2f2;
-    padding: 20px;
+#searchResults a {
+    color: #ff6666;
 }
-
-.meal-details-container img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
 #footer-container {
-    color: white;
     text-align: center;
     padding: 10px;
     position: fixed;
