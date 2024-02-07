@@ -31,28 +31,42 @@ function searchFood() {
         .then(data => {
             if (data.meals) {
                 data.meals.forEach(meal => {
-                    const card = $("<div>")
-                        .addClass("card")
-                        .append(
-                            $("<div>").addClass("card-body")
-                                .append($("<h5>").addClass("card-title").text(meal.strMeal))
-                                .append($("<a>").attr("href", "#").addClass("card-link").text("View Details").click(() => {
-                                    displayFoodDetails(meal.idMeal);
-                                    clearPreviousData();
-                                }))
-                        );
-
+                    const capitalizedMeal = meal.strMeal.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                    
+                    const card = $("<div>").addClass("card mt-3")
+                    const cardBody = $("<div>").addClass("card-body");
+                    const cardTitle = $("<h5>").addClass("card-title").text(`${capitalizedMeal}:`)
+                    const mealList = $("<ul>").addClass("list-group");
+                    const listItem = $("<li>").addClass("list-group-item");
+                    const mealLink = $("<a>").addClass("card-link").attr({
+                        "href": "#", // Change to meal details link if available
+                    }).text("View Details").click(() => {
+                        displayFoodDetails(meal.idMeal);
+                        $(".card").remove(); // Remove all card elements when any card is clicked
+                    });
+                    listItem.append(mealLink);
+                    mealList.append(listItem);
+            
+                    cardBody.append(cardTitle, mealList);
+                    card.append(cardBody);
+            
                     searchResultsContainer.append(card);
                 });
+
+                // Scroll to the top of the search results container
+                searchResultsContainer.scrollTop(0);
             } else {
                 searchResultsContainer.html("<p>No results found.</p>");
             }
+            
         })
         .catch(error => {
             console.error('Error searching for food:', error);
             searchResultsContainer.html("<p>Something went wrong. Please try again later.</p>");
         });
 }
+
+
 
 function displayFoodDetails(mealId) {
     fetch(`https://www.themealdb.com/api/json/v1/${apiKey}/lookup.php?i=${mealId}`)
