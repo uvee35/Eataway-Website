@@ -57,30 +57,34 @@
             </div>
         </nav>
     </header>
-    <section class ="SearchBar text-center py-1">
+    <main>
+        <section class="SearchBar text-center py-1">
         <div class="container d-flex justify-content-center">
             <input type="text" id="searchInput" placeholder="Search for food">
             <button id="searchButton">Search</button>
         </div>
-        <div class="randomFoodGenerator py-1"> 
-            <button id="randomButton">Random</button>
+        <div class="randomFoodGenerator py-1">
+            <button type="button" id="randomButton">Random</button>
         </div>
     </section>
     <section class="searchResult">
         <div class="container mt-4 text-center" id="searchResults"></div>
-        <div class="container row mt-4">
-            <div class="col-10 align-self-center" id="image"></div>
-            <div class="col-2" id="ingredients"></div>
-            <div class="col-12" id="recipe"></div>
+        <div class="container mt-4">
+            <div class="col-12 d-flex justify-content-center align-items-center" id="image"></div>
+            <div class="col-12 d-flex justify-content-center py-5" id="ingredients"></div>
+            <div class="col-12 text-center" id="recipe"></div>
         </div>
+    </section>    
+    <section class="foodPlate text-center">
+        <h5>Reccomended</h5>
+        <div class="container mt-4 d-flex justify-content-center" id="foodPlate"></div>
     </section>
+    </main>
     <div id="footer-container"></div>
 
     <script src="../Assets/js/header-and-footer.js"></script>
-        <script src="../Assets/js/script.js"></script>
-        <script src="../Assets/js/receipe.js"></script>
-    
+    <script src="../Assets/js/receipe.js"></script>
+
 </body>
 
 </html>
-
