@@ -18,6 +18,7 @@ $(document).ready(function () {
 
     function searchFood() {
         clearPreviousData();
+        $('.recommended').hide();
 
         const input = searchInput.val().trim();
         if (!input) {
@@ -47,8 +48,7 @@ $(document).ready(function () {
                         }).text("View Details").click(() => {
                             displayFoodDetails(meal.idMeal);
                             $(".card").remove(); // Remove all card elements when any card is clicked
-                            $("#foodPlate").hide();
-                            $('.reccommended').hide();
+                            
                             
                         });
                         listItem.append(mealLink);
@@ -85,7 +85,7 @@ $(document).ready(function () {
 
                 // Clear previous data
                 clearPreviousData();
-                $('.reccommended').hide();
+                $('.recommended').hide();
 
                 // Display meal name on top of the image
                 const mealName = $("<h3>").addClass("text-center").text(meal.strMeal);
@@ -158,7 +158,7 @@ $(document).ready(function () {
         card.click(() => {
             displayFoodDetails(meal.idMeal); // Call displayFoodDetails function with meal ID
             $("#foodPlate").hide();
-            $('.reccommended').hide();
+            $('.recommended').hide();
         });
     
         cardBody.append(cardTitle, cardCategory);
