@@ -2,10 +2,20 @@ section {
     margin: 20px;
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
 button {
     padding: 10px;
     cursor: pointer;
     margin: 15; /* Add margin for spacing between buttons */
+}
+
+button {
+    background-color: #ad5454;
+    color: white;
 }
 
 input {
@@ -22,10 +32,33 @@ input {
 #searchResults a {
     color: #ff6666;
 }
+
+.ingredient-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ingredient-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.ingredient-image {
+    width: 100px;
+    height: 100px;
+}
+
+.ingredient-text {
+    margin-top: 5px;
+    text-align: center;
+}
+
+
 #footer-container {
     text-align: center;
     padding: 10px;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
