@@ -5,7 +5,8 @@ $(document).ready(function () {
     const imageContainer = $("#image");
     const recipeContainer = $("#recipe");
     const ingredientsContainer = $("#ingredients");
-    const foodPlateContainer = $("#foodPlate"); // Define food plate container
+    const foodPlateContainer = $("#foodPlate");
+    const foodTitle = $("#foodTitle");
 
     function clearPreviousData() {
         searchResultsContainer.empty();
@@ -46,7 +47,9 @@ $(document).ready(function () {
                         }).text("View Details").click(() => {
                             displayFoodDetails(meal.idMeal);
                             $(".card").remove(); // Remove all card elements when any card is clicked
-                            $("#foodPlate").hide(); // Hide the foodPlate section when a card is clicked
+                            $("#foodPlate").hide();
+                            $('.reccommended').hide();
+                            
                         });
                         listItem.append(mealLink);
                         mealList.append(listItem);
@@ -82,6 +85,7 @@ $(document).ready(function () {
 
                 // Clear previous data
                 clearPreviousData();
+                $('.reccommended').hide();
 
                 // Display meal name on top of the image
                 const mealName = $("<h3>").addClass("text-center").text(meal.strMeal);
@@ -136,6 +140,7 @@ $(document).ready(function () {
                 } else {
                     recipeContainer.html("<p>Random meal could not be generated. Please try again later.</p>");
                 }
+                $('.reccommended').hide();
             })
             .catch(error => {
                 console.error('Error fetching random food details:', error);
@@ -152,7 +157,8 @@ $(document).ready(function () {
         // Make the entire card clickable
         card.click(() => {
             displayFoodDetails(meal.idMeal); // Call displayFoodDetails function with meal ID
-            $("#foodPlate").hide(); // Hide the foodPlate section when a card is clicked
+            $("#foodPlate").hide();
+            $('.reccommended').hide();
         });
     
         cardBody.append(cardTitle, cardCategory);
