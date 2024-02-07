@@ -2,18 +2,17 @@ section {
     margin: 20px;
 }
 
-.search-container {
-    display: flex;
-    align-items: center;
-}
 
-button {
+#searchButton {
     padding: 10px;
     cursor: pointer;
     margin: 15; /* Add margin for spacing between buttons */
+    background-color: #ad5454;
+    color: white;
 }
 
-button {
+
+#randomButton {
     background-color: #ad5454;
     color: white;
 }
