@@ -141,27 +141,10 @@ body {
 }
 
 /* View Post Button */
-.view-post-btn {
-  background-color: #4CAF50;
-  border: none; 
-  color: white; 
-  padding: 10px 20px; 
-  text-align: center; 
-  text-decoration: none; 
-  display: inline-block; 
-  font-size: 16px;
-  margin: 4px 2px; 
-  transition-duration: 0.4s; 
-  cursor: pointer; 
-  border-radius: 5px; 
+#submit-btn {
+  background-color: #ad5454;
+  color: white;
 }
-
-.view-post-btn:hover {
-  background-color: white; 
-  color: #4CAF50; 
-  border: 2px solid #4CAF50; 
-}
-
 .post-card {
   background-color: #E3F1FF;
   border: 1px solid #ccc;
