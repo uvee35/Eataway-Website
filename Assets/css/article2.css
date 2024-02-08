@@ -49,10 +49,9 @@ h1 {
 }
 
 /* Style for the comment submission button */
-.comment-form button,
-.ad-button  {
- background-color: #AD5454;
-  color: #171616;
+#submit-btn {
+  background-color: #ad5454;
+  color: white;
 }
 
 
