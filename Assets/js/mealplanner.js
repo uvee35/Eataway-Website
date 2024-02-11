@@ -11,7 +11,12 @@ var timeFrame = "week";
 //2. Fetch data from meal plan API ✅
 //3. Create function to generate meal plan when submit button is clicked
 //function must take in calorie intake, diet type, dietry requirements
-
+// Inside the fetch callback function
+.then(function (data) {
+  // Store the fetched data in the local storage
+    localStorage.setItem('mealPlanData', JSON.stringify(data));
+    displayMealPlan(data.week);
+})
 
 submitBtn.on("click", generateMealPlan);
 function generateMealPlan(event) {
