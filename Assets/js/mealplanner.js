@@ -20,14 +20,32 @@ function generateMealPlan(event) {
     var dietTypeEL = $("#dietType");
     var exclusionEL = $("#foodExclusions");
     var messageContainer = $("#message-container");
-    
+
     var calories = calorieEL.val();
     var dietType = dietTypeEL.val().trim();
     var exclusion = exclusionEL.val().trim();
-    
-    if (!calories) {
-        console.log(calories);
+    var minCalories = 1500;
+
+    if(parseInt(calories) < minCalories) {
+        messageContainer.text("Calories must be at least 1500.");
         return;
+    }
+
+    if (!calories) {
+        messageContainer.text("Please enter your daily calorie intake.");
+        return;
+    }
+
+    if (!dietType) {
+        messageContainer.text("Please select a diet type.");
+        return;
+    }
+
+    if (!exclusion) {
+        exclusion = ''; // Default to empty if nothing provided
+    }
+    if (calories && dietType) {
+        messageContainer.fadeOut(1000);
     }
 
     //having issues with getting this part to work
