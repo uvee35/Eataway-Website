@@ -13,7 +13,7 @@ $(document).ready(function () {
         imageContainer.empty();
         recipeContainer.empty();
         ingredientsContainer.empty();
-        foodPlateContainer.empty(); // Clear food plate container
+        foodPlateContainer.empty();
     }
 
     function searchFood() {
@@ -44,10 +44,10 @@ $(document).ready(function () {
                         const mealList = $("<ul>").addClass("list-group");
                         const listItem = $("<li>").addClass("list-group-item");
                         const mealLink = $("<a>").addClass("card-link").attr({
-                            "href": "#", // Change to meal details link if available
+                            "href": "#",
                         }).text("View Details").click(() => {
                             displayFoodDetails(meal.idMeal);
-                            $(".card").remove(); // Remove all card elements when any card is clicked
+                            $(".card").remove();
                             
                             
                         });
@@ -83,19 +83,26 @@ $(document).ready(function () {
                     throw new Error('Meal not found');
                 }
 
-                // Clear previous data
                 clearPreviousData();
                 $('.recommended').hide();
+                
+                /********************************************************************** 
+                couldn't get the recipe name to display on top of the main image, 
+                I have tried both append and prepend but both displayed
+                in the same location
 
-                // Display meal name on top of the image
+                Got it working by switching the location it is being append to from
+                recipeContainer to imageContainer
+                **********************************************************************/
                 const mealName = $("<h3>").addClass("text-center").text(meal.strMeal);
-                recipeContainer.append(mealName);
+                imageContainer.append(mealName);
+                
 
                 // Display meal image
                 const mealImage = $("<img>").attr("src", meal.strMealThumb).attr("alt", meal.strMeal).addClass("img-thumbnail");
                 imageContainer.append(mealImage);
 
-                // Display recipe instructions without a list
+                // Display recipe instructions
                 const instructions = meal.strInstructions.split('\n').filter(instruction => instruction.trim());
                 recipeContainer.append("<h4>Recipe</h4>");
                 instructions.forEach(instruction => {
@@ -103,12 +110,12 @@ $(document).ready(function () {
                 });
 
                 // Display ingredients
-                const ingredientsWrapper = $("<div>").addClass("ingredient-wrapper");
+                const ingredientsWrapper = $("<div>").addClass("ingredient-wrapper row");
                 for (let i = 1; i <= 20; i++) {
                     const ingredient = meal[`strIngredient${i}`];
                     const measure = meal[`strMeasure${i}`];
                     if (ingredient && measure) {
-                        const ingredientImage = $("<img>").addClass("ingredient-image").attr("src", `https://www.themealdb.com/images/ingredients/${ingredient}.png`).attr("alt", ingredient);
+                        const ingredientImage = $("<img>").addClass("ingredient-image justify-content-center").attr("src", `https://www.themealdb.com/images/ingredients/${ingredient}.png`).attr("alt", ingredient);
                         const ingredientText = $("<p>").addClass("ingredient-text").text(`${measure} ${ingredient}`);
                         const ingredientContainer = $("<div>").addClass("ingredient-container").append(ingredientImage, ingredientText);
                         ingredientsWrapper.append(ingredientContainer);
@@ -148,21 +155,23 @@ $(document).ready(function () {
             });
     }
     function createFoodPlateCard(meal) {
-        const card = $("<div>").addClass("card mt-3 mx-3");
+        const card = $("<div>").addClass("card mt-3 mx-1 col-md-3");
         const cardImage = $("<img>").addClass("card-img-top").attr("src", meal.strMealThumb).attr("alt", meal.strMeal);
         const cardBody = $("<div>").addClass("card-body");
         const cardTitle = $("<h5>").addClass("card-title").text(meal.strMeal);
         const cardCategory = $("<p>").addClass("card-text").text(meal.strCategory); 
     
-        // Make the entire card clickable
+        // Makes the entire card clickable
         card.click(() => {
-            displayFoodDetails(meal.idMeal); // Call displayFoodDetails function with meal ID
+            displayFoodDetails(meal.idMeal);
             $("#foodPlate").hide();
             $('.recommended').hide();
         });
     
+        card.append(cardImage)
         cardBody.append(cardTitle, cardCategory);
-        card.append(cardImage, cardBody);
+        card.append(cardBody);
+        
     
         return card;
     }
@@ -174,6 +183,8 @@ $(document).ready(function () {
             "Katsu Chicken Curry",
             "Pancakes",
             "New York Cheesecake",
+            "Shawarma",
+            "Chocolate Avocado Mousse"
         ];
 
         meals.forEach(mealName => {
